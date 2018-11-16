@@ -1,0 +1,536 @@
+<html>
+<center>
+<style>
+body {
+    background-color: #FF00FF;
+}
+</style>
+<h1>Lights Out!</h1>
+<h2 id = "currentlevel">Level 1</h2>
+<h3 id = "clicknum">Clicks:0</h2>
+<table border = 10 style = "width:500px;height:500px">
+<tr>
+<th id = "a1" onclick = "changelight('a11','x','a22','x','b11');"></th>
+<th id = "a2" onclick = "changelight('a22','a11','a33','x','b22');"></th>
+<th id = "a3" onclick = "changelight('a33','a22','a44','x','b33');"></th>
+<th id = "a4" onclick = "changelight('a44','a33','a55','x','b44');"></th>
+<th id = "a5" onclick = "changelight('a55','a44','x','x','b55');"></th>
+</tr>
+<tr>
+<th id = "b1" onclick = "changelight('b11','x','b22','a11','c11');"></th>
+<th id = "b2" onclick = "changelight('b22','b11','b33','a22','c22');"></th>
+<th id = "b3" onclick = "changelight('b33','b22','b44','a33','c33');"></th>
+<th id = "b4" onclick = "changelight('b44','b33','b55','a44','c44');"></th>
+<th id = "b5" onclick = "changelight('b55','b44','x','a55','c55');"></th>
+</tr>
+<tr>
+<th id = "c1" onclick = "changelight('c11','x','c22','b11','d11');"></th>
+<th id = "c2" onclick = "changelight('c22','c11','c33','b22','d22');"></th>
+<th id = "c3" onclick = "changelight('c33','c22','c44','b33','d33');"></th>
+<th id = "c4" onclick = "changelight('c44','c33','c55','b44','d44');"></th>
+<th id = "c5" onclick = "changelight('c55','c44','x','b55','d55');"></th>
+</tr>
+<tr>
+<th id = "d1" onclick = "changelight('d11','x','d22','c11','e11');"></th>
+<th id = "d2" onclick = "changelight('d22','d11','d33','c22','e22');"></th>
+<th id = "d3" onclick = "changelight('d33','d22','d44','c33','e33');"></th>
+<th id = "d4" onclick = "changelight('d44','d33','d55','c44','e44');"></th>
+<th id = "d5" onclick = "changelight('d55','d44','x','c55','e55');"></th>
+</tr>
+<tr>
+<th id = "e1" onclick = "changelight('e11','x','e22','d11','x');"></th>
+<th id = "e2" onclick = "changelight('e22','e11','e33','d22','x');"></th>
+<th id = "e3" onclick = "changelight('e33','e22','e44','d33','x');"></th>
+<th id = "e4" onclick = "changelight('e44','e33','e55','d44','x');"></th>
+<th id = "e5" onclick = "changelight('e55','e44','x','d55','x');"></th>
+</tr>
+</table>
+<br>
+<button style="height:40px;width:60px;" id = "resetbutton" onclick = "resetgame();">Reset!</button>
+<h3>Leaderboard!</h3>
+<ol id = "Leaderbored">
+</center>
+</html>
+<script>
+a11=a22=a33=a44=a55=b11=b22=b33=b44=b55=c11=c22=c33=c44=c55=d11=d22=d33=d44=d55=e11=e22=e33=e44=e55=0
+x = 0 
+tw = 0
+resetgame();
+function resetgame(){
+click = 0
+document.getElementById("clicknum").innerHTML =  "Clicks:"+click
+lv = 0
+newLevel();
+update();
+}
+function level1()
+{
+	click = 0;lv = 1;tw = 0
+	a11=1;a22=1;a33=0;a44=1;a55=0;b11=1;b22=0;b33=1;b44=1;b55=1;c11=0;c22=1;c33=0;c44=1;c55=0;d11=1;d22=1;d33=1;d44=0;d55=1;e11=0;e22=1;e33=0;e44=1;e55=1
+	update(); 	
+	window.alert("Starting Level 1");
+	document.getElementById("currentlevel").innerHTML = "Level "+lv
+}
+function level2()
+{
+	lv=2
+	a11=1;a22=0;a33=0;a44=0;a55=1;b11=0;b22=1;b33=0;b44=1;b55=0;c11=0;c22=0;c33=0;c44=0;c55=0;d11=0;d22=1;d33=0;d44=1;d55=0;e11=1;e22=0;e33=0;e44=0;e55=1
+	update();	
+	window.alert("You beat Level 1! On to Level 2!");
+	document.getElementById("currentlevel").innerHTML = "Level "+lv
+}
+function level3()
+{
+	lv = 3
+	a11=1;a22=0;a33=0;a44=0;a55=1;b11=0;b22=1;b33=1;b44=1;b55=0;c11=0;c22=1;c33=1;c44=1;c55=0;d11=0;d22=1;d33=1;d44=1;d55=0;e11=1;e22=0;e33=0;e44=0;e55=1
+	update();
+	window.alert("We're halfway there! Level 3 initiated.");	
+	document.getElementById("currentlevel").innerHTML = "Level "+lv
+}
+function level4()
+{
+	lv = 4
+	a11=0;a22=1;a33=0;a44=1;a55=0;b11=0;b22=0;b33=0;b44=0;b55=0;c11=0;c22=0;c33=0;c44=0;c55=0;d11=0;d22=0;d33=0;d44=0;d55=0;e11=0;e22=1;e33=0;e44=1;e55=0
+	update();	
+	window.alert("Impressive! Level 4, loadout.");
+	document.getElementById("currentlevel").innerHTML = "Level "+lv
+}
+function level5()
+{
+	lv = 5
+	a11=0;a22=0;a33=1;a44=0;a55=0;b11=0;b22=0;b33=0;b44=0;b55=0;c11=1;c22=0;c33=1;c44=0;c55=1;d11=0;d22=0;d33=0;d44=0;d55=0;e11=0;e22=0;e33=1;e44=0;e55=0
+	update();	
+	window.alert("Final boss time. Good luck on Level 5!");
+	document.getElementById("currentlevel").innerHTML = "Level "+lv
+}
+function totalwin()
+{
+	if(tw==0)
+	{
+		leadertemp = [prompt("You Won! Enter your name!"),click]
+		leaderboard();
+		document.getElementById("currentlevel").innerHTML = "You Won!!!"
+		tw = 1
+	}
+}
+bigsad=["none",1000];leader1=["none",1000];leader2=["none",1000];leader3=["none",1000];leader4=["none",1000];leader5=["none",1000];leadertemp=bigsad;
+function leaderboard(){
+	if(leader1[0]=="none")
+	{
+		leader1 = leadertemp
+		leadertemp = bigsad
+		document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li>"
+	}
+	else
+	{
+		if(leader2[0]=="none")
+		{
+			if(leadertemp[1]<leader1[1])
+			{
+				var temp = leader1
+				leader1 = leadertemp
+				leader2 = temp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li>"
+			}
+			else
+			{
+				leader2 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li>"
+			}
+		}
+		else if(leader3[0]=="none")
+		{
+			if(leadertemp[1]<leader1[1])
+			{
+				leader3 = leader2
+				leader2 = leader1
+				leader1 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li>"
+			}
+			else if(leadertemp[1]<leader2[1])
+			{
+				leader3 = leader2
+				leader2 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li>"
+			}
+			else
+			{
+				leader3 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li>"
+			}
+		}
+		else if(leader4[0]=="none")
+		{
+			if(leadertemp[1]<leader1[1])
+			{
+				leader4 = leader3
+				leader3 = leader2
+				leader2 = leader1
+				leader1 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li>"
+			}
+			else if(leadertemp[1]<leader2[1])
+			{
+				leader4 = leader3
+				leader3 = leader2
+				leader2 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li>"
+			}
+			else if(leadertemp[1]<leader3[1])
+			{
+				leader4 = leader3
+				leader3 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li>"
+			}
+			else
+			{
+				leader4 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li>"
+			}
+		}
+	
+		else if(leader5[0]=="none")
+		{
+			if(leadertemp[1]<leader1[1])
+			{
+				leader5 = leader4
+				leader4 = leader3
+				leader3 = leader2
+				leader2 = leader1
+				leader1 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li><li>"+leader5[0]+" -- "+leader5[1]+"</li>"
+			}
+			else if(leadertemp[1]<leader2[1])
+			{
+				leader5 = leader4
+				leader4 = leader3
+				leader3 = leader2
+				leader2 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li><li>"+leader5[0]+" -- "+leader5[1]+"</li>"
+			}
+			else if(leadertemp[1]<leader3[1])
+			{
+				leader5 = leader4
+				leader4 = leader3
+				leader3 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li><li>"+leader5[0]+" -- "+leader5[1]+"</li>"
+			}		
+			else if(leadertemp[1]<leader4[1])
+			{
+				leader5 = leader4
+				leader4 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li><li>"+leader5[0]+" -- "+leader5[1]+"</li>"
+			}
+			else
+			{
+				leader5 = leadertemp
+				leadertemp = bigsad
+				document.getElementById("Leaderbored").innerHTML="<li>"+leader1[0]+" -- "+leader1[1]+"</li><li>"+leader2[0]+" -- "+leader2[1]+"</li><li>"+leader3[0]+" -- "+leader3[1]+"</li><li>"+leader4[0]+" -- "+leader4[1]+"</li><li>"+leader5[0]+" -- "+leader5[1]+"</li>"
+			}			
+		}
+	}
+}
+
+function update()
+{
+	if(a11==0)
+	{
+		document.getElementById("a1").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("a1").style.backgroundColor = "red"
+	}
+	if(a22==0)
+	{
+		document.getElementById("a2").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("a2").style.backgroundColor = "red"
+	}
+	if(a33==0)
+	{
+		document.getElementById("a3").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("a3").style.backgroundColor = "red"
+	}
+	if(a44==0)
+	{
+		document.getElementById("a4").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("a4").style.backgroundColor = "red"
+	}
+	if(a55==0)
+	{
+		document.getElementById("a5").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("a5").style.backgroundColor = "red"
+	}
+	if(b11==0)
+	{
+		document.getElementById("b1").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("b1").style.backgroundColor = "red"
+	}
+	if(b22==0)
+	{
+		document.getElementById("b2").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("b2").style.backgroundColor = "red"
+	}
+	if(b33==0)
+	{
+		document.getElementById("b3").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("b3").style.backgroundColor = "red"
+	}
+	if(b44==0)
+	{
+		document.getElementById("b4").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("b4").style.backgroundColor = "red"
+	}
+	if(b55==0)
+	{
+		document.getElementById("b5").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("b5").style.backgroundColor = "red"
+	}
+	if(c11==0)
+	{
+		document.getElementById("c1").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("c1").style.backgroundColor = "red"
+	}
+	if(c22==0)
+	{
+		document.getElementById("c2").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("c2").style.backgroundColor = "red"
+	}
+	if(c33==0)
+	{
+		document.getElementById("c3").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("c3").style.backgroundColor = "red"
+	}
+	if(c44==0)
+	{
+		document.getElementById("c4").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("c4").style.backgroundColor = "red"
+	}
+	if(c55==0)
+	{
+		document.getElementById("c5").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("c5").style.backgroundColor = "red"
+	}
+	if(d11==0)
+	{
+		document.getElementById("d1").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("d1").style.backgroundColor = "red"
+	}
+	if(d22==0)
+	{
+		document.getElementById("d2").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("d2").style.backgroundColor = "red"
+	}
+	if(d33==0)
+	{
+		document.getElementById("d3").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("d3").style.backgroundColor = "red"
+	}
+	if(d44==0)
+	{
+		document.getElementById("d4").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("d4").style.backgroundColor = "red"
+	}
+	if(d55==0)
+	{
+		document.getElementById("d5").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("d5").style.backgroundColor = "red"
+	}
+	if(e11==0)
+	{
+		document.getElementById("e1").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("e1").style.backgroundColor = "red"
+	}
+	if(e22==0)
+	{
+		document.getElementById("e2").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("e2").style.backgroundColor = "red"
+	}
+	if(e33==0)
+	{
+		document.getElementById("e3").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("e3").style.backgroundColor = "red"
+	}
+	if(e44==0)
+	{
+		document.getElementById("e4").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("e4").style.backgroundColor = "red"
+	}
+	if(e55==0)
+	{
+		document.getElementById("e5").style.backgroundColor = "white"
+	}
+	else
+	{
+		document.getElementById("e5").style.backgroundColor = "red"
+	}
+
+}
+update();
+
+function checkwin()
+{
+	if(a11==0&&a11==a22&&a11==a33&&a11==a44&&a11==a55&&a11==b11&&a11==b22&&a11==b33&&a11==b44&&a11==b55&&a11==c11&&a11==c22&&a11==c33&&a11==c44&&a11==c55&&a11==d11&&a11==d22&&a11==d33&&a11==d44&&a11==d55&&a11==e11&&a11==e22&&a11==e33&&a11==e44&&a11==e55)
+	{
+	newLevel();
+	console.log(a11)
+	} 
+}
+function newLevel()
+{
+	if(lv==0)
+	{
+	level1();
+	}
+	else if(lv==1)
+	{
+	level2();
+	}
+	else if(lv==2)
+	{
+	level3();
+	}
+	else if(lv==3)
+	{
+	level4();
+	}
+	else if(lv==4)
+	{
+	level5();
+	}
+	else if(lv==5)
+	{
+	totalwin();
+	}
+}
+function changelight(a,b,c,d,e)
+{
+	console.log(a)
+	click++
+	document.getElementById("clicknum").innerHTML =  "Clicks:"+click
+	if(window[a]==0)
+	{
+		window[a]=1;
+	}
+	else
+	{
+		window[a]=0
+	}
+	if(window[b]==0)
+	{
+		window[b]=1;
+	}
+	else
+	{
+		window[b]=0;
+	}
+	if(window[c]==0)
+	{
+		window[c]=1;
+	}
+	else
+	{
+		window[c]=0;
+	}
+	if(window[d]==0)
+	{
+		window[d]=1;
+	}
+	else
+	{
+		window[d]=0;
+	}
+	if(window[e]==0)
+	{
+		window[e]=1;
+	}
+	else
+	{
+		window[e]=0;
+	}
+	update();
+	checkwin();
+}
+</script>
